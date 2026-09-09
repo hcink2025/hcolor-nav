@@ -27,10 +27,10 @@
   <link rel="stylesheet" href="/css/tailwind.min.css?v=38e0a016">
   <style>
 /* ============================================================ */
-/* 强制覆盖：实现类似 WebDesk 的纯桌面 App 图标风格 */
+/* 纯 Logo 悬浮桌面风格：去除卡片大背景与 Logo 白底衬板 */
 /* ============================================================ */
 
-/* 1. 彻底去除大白色胶囊背景、边框、投影 */
+/* 1. 彻底去除卡片的大白色背景、边框、投影 */
 #sitesGrid .site-card,
 #sitesGrid .site-card.style-3 {
   background: transparent !important;
@@ -40,9 +40,10 @@
   overflow: visible !important;
   padding: 4px !important;
   min-height: auto !important;
+  height: auto !important;
 }
 
-/* 2. 将卡片整体重置为“上图标、下文字”居中对齐 */
+/* 2. 垂直居中对齐（上图标、下标题） */
 #sitesGrid .site-card .site-card-content,
 #sitesGrid .site-card .site-card-content > a,
 #sitesGrid .site-card .site-card-content > a > div,
@@ -56,13 +57,13 @@
   position: static !important;
 }
 
-/* 3. 重置并解除右上角绝对定位，恢复为大 App 图标 */
+/* 3. 图标位置与间距 */
 #sitesGrid .site-card .site-icon,
 #sitesGrid .site-card.style-3 .site-icon {
-  position: static !important;           /* 解除右上角绝对定位 */
+  position: static !important;
   top: auto !important;
   right: auto !important;
-  margin: 0 auto 8px auto !important;    /* 居中并与文字拉开间距 */
+  margin: 0 auto 8px auto !important;
   width: auto !important;
   height: auto !important;
   display: flex !important;
@@ -70,29 +71,33 @@
   justify-content: center !important;
 }
 
-/* 图标本体：高质感桌面 App 大图标 */
+/* 4. 纯 Logo 本身：去掉白底、去掉方块、保持纯透明悬浮 */
 #sitesGrid .site-card .site-icon img,
 #sitesGrid .site-card .site-icon div,
 #sitesGrid .site-card.style-3 .site-icon img,
 #sitesGrid .site-card.style-3 .site-icon div {
-  width: 58px !important;               /* 图标尺寸：58px */
-  height: 58px !important;
-  border-radius: 16px !important;        /* App 大圆角 */
-  object-fit: cover !important;
-  background-color: #ffffff !important;  /* 白底衬托透明图标，防止被背景吞掉 */
-  padding: 6px !important;              /* 图标呼吸内边距 */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18) !important; /* 图标独立浮雕投影 */
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+  width: 56px !important;               /* 图标显示尺寸 */
+  height: 56px !important;
+  border-radius: 0 !important;           /* 去除方块圆角 */
+  object-fit: contain !important;        /* 保持原图标比例 */
+  background: transparent !important;    /* 彻底去除白色底板 */
+  background-color: transparent !important;
+  padding: 0 !important;                 /* 去除内边距 */
+  box-shadow: none !important;           /* 去除方形盒阴影 */
+  /* 贴合 Logo 图标边缘的自然轻微阴影，防止在亮色云朵上看不清 */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35)) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease !important;
 }
 
-/* 鼠标悬停动画：轻微浮起放大 */
+/* 鼠标悬停时：Logo 上浮放大，立体感增强 */
 #sitesGrid .site-card:hover .site-icon img,
 #sitesGrid .site-card:hover .site-icon div {
-  transform: translateY(-5px) scale(1.08) !important;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28) !important;
+  transform: translateY(-5px) scale(1.12) !important;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5)) !important;
+  box-shadow: none !important;
 }
 
-/* 4. 标题文字：放在图标正下方居中 */
+/* 5. 标题文字：放在图标正下方居中 */
 #sitesGrid .site-card .site-title,
 #sitesGrid .site-card.style-3 .site-title {
   position: static !important;
@@ -105,8 +110,8 @@
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
-  color: #ffffff !important;             /* 白色字体配合壁纸 */
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important; /* 文字投影提升清晰度 */
+  color: #ffffff !important;             /* 白色字 */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important; /* 文字阴影增强可读性 */
 }
 </style>
 </head>
