@@ -25,12 +25,12 @@
     }
   </script>
   <link rel="stylesheet" href="/css/tailwind.min.css?v=38e0a016">
-  <style>
+<style>
 /* ============================================================ */
-/* 纯 Logo 悬浮桌面风格：去除卡片大背景与 Logo 白底衬板 */
+/* WebDesk 级 App 桌面图标效果（统一大圆角 + 平滑裁切） */
 /* ============================================================ */
 
-/* 1. 彻底去除卡片的大白色背景、边框、投影 */
+/* 1. 卡片外框完全透明 */
 #sitesGrid .site-card,
 #sitesGrid .site-card.style-3 {
   background: transparent !important;
@@ -43,7 +43,7 @@
   height: auto !important;
 }
 
-/* 2. 垂直居中对齐（上图标、下标题） */
+/* 2. 居中排列 */
 #sitesGrid .site-card .site-card-content,
 #sitesGrid .site-card .site-card-content > a,
 #sitesGrid .site-card .site-card-content > a > div,
@@ -57,47 +57,43 @@
   position: static !important;
 }
 
-/* 3. 图标位置与间距 */
+/* 3. 统一标准 App 图标底座（完美模拟 WebDesk 的 Squircle 圆角） */
 #sitesGrid .site-card .site-icon,
 #sitesGrid .site-card.style-3 .site-icon {
   position: static !important;
-  top: auto !important;
-  right: auto !important;
-  margin: 0 auto 8px auto !important;
-  width: auto !important;
-  height: auto !important;
+  width: 60px !important;               /* 标准 App 图标尺寸 */
+  height: 60px !important;
+  border-radius: 15px !important;        /* 仿 iOS/WebDesk 平滑大圆角比例 */
+  background-color: #ffffff !important;  /* 统一白底基座（透明图标不突兀） */
+  overflow: hidden !important;           /* 核心！强制把腾讯视频等直角图片裁切成圆角 */
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  margin: 0 auto 8px auto !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important; /* 图标悬浮阴影 */
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
 }
 
-/* 4. 纯 Logo 本身：去掉白底、去掉方块、保持纯透明悬浮 */
+/* 4. 图标图片：自适应容器并平滑抗锯齿 */
 #sitesGrid .site-card .site-icon img,
 #sitesGrid .site-card .site-icon div,
 #sitesGrid .site-card.style-3 .site-icon img,
 #sitesGrid .site-card.style-3 .site-icon div {
-  width: 56px !important;               /* 图标显示尺寸 */
-  height: 56px !important;
-  border-radius: 0 !important;           /* 去除方块圆角 */
-  object-fit: contain !important;        /* 保持原图标比例 */
-  background: transparent !important;    /* 彻底去除白色底板 */
-  background-color: transparent !important;
-  padding: 0 !important;                 /* 去除内边距 */
-  box-shadow: none !important;           /* 去除方形盒阴影 */
-  /* 贴合 Logo 图标边缘的自然轻微阴影，防止在亮色云朵上看不清 */
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35)) !important;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;          /* 满铺图标，填满圆角底座 */
+  border-radius: inherit !important;
+  image-rendering: -webkit-optimize-contrast !important; /* 提升缩放清晰度 */
+  image-rendering: high-quality !important;
 }
 
-/* 鼠标悬停时：Logo 上浮放大，立体感增强 */
-#sitesGrid .site-card:hover .site-icon img,
-#sitesGrid .site-card:hover .site-icon div {
-  transform: translateY(-5px) scale(1.12) !important;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5)) !important;
-  box-shadow: none !important;
+/* 鼠标悬停动画：上浮 + 阴影扩散 */
+#sitesGrid .site-card:hover .site-icon {
+  transform: translateY(-5px) scale(1.08) !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26) !important;
 }
 
-/* 5. 标题文字：放在图标正下方居中 */
+/* 5. 标题文字 */
 #sitesGrid .site-card .site-title,
 #sitesGrid .site-card.style-3 .site-title {
   position: static !important;
@@ -110,8 +106,8 @@
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
-  color: #ffffff !important;             /* 白色字 */
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important; /* 文字阴影增强可读性 */
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
 }
 </style>
 </head>
