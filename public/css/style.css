@@ -2019,3 +2019,77 @@ html:not(.dark) .dropdown-item.active {
     margin-bottom: 0;
   }
 }
+
+/* ============================================================ */
+/* 仿 WebDesk 风格：去除白色大卡片背景，只保留桌面图标效果 */
+/* ============================================================ */
+
+/* 1. 去除卡片的大白色背景、边框与阴影 */
+.site-card {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  overflow: visible !important;
+  padding: 8px 4px !important;
+}
+
+/* 兼容暗黑模式透明 */
+.dark .site-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 2. 改为类似 WebDesk 的“上图标、下标题”垂直居中排列 */
+.site-card .site-card-content,
+.site-card .site-card-content > a,
+.site-card .site-card-content > a > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* 3. 美化图标（居中、圆角、阴影、悬浮微浮动） */
+.site-card .site-icon {
+  margin-right: 0 !important;
+  margin-bottom: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.site-card .site-icon img,
+.site-card .site-icon .site-initial {
+  width: 52px !important;               /* 图标大小，50px~56px 视觉效果最好 */
+  height: 52px !important;
+  border-radius: 14px !important;        /* 仿 iOS/桌面应用大圆角 */
+  object-fit: cover !important;
+  background-color: #ffffff !important;  /* 白底衬托透明图标，防止被壁纸吞掉 */
+  padding: 4px !important;              /* 图标内边距留白 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; /* 图标悬浮阴影 */
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+}
+
+/* 鼠标悬停时图标微上浮放大 */
+.site-card:hover .site-icon img,
+.site-card:hover .site-icon .site-initial {
+  transform: translateY(-4px) scale(1.08) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 4. 标题文字居中与阴影（保证在壁纸上清晰易读） */
+.site-card .site-title {
+  text-align: center !important;
+  width: 100% !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  margin-top: 2px !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45) !important; /* 文字阴影防背景花 */
+}
