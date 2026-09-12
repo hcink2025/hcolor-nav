@@ -30,14 +30,17 @@
 /* WebDesk 级 App 桌面图标效果（紧凑网格 + 原生桌面间距） */
 /* ============================================================ */
 
-/* 1. 桌面级网格：紧凑自适应排布，完美对齐 WebDesk 图标间隙 */
+/* 1. 桌面级弹性网格：整体严格居中对齐，新书签由中心向两翼对称排列 */
 #sitesGrid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, 86px) !important; /* 每格固定 86px 桌面单元格 */
-  justify-content: center !important;                        /* 居中排列 */
-  column-gap: 26px !important;                               /* 横向间距（精确匹配 WebDesk） */
-  row-gap: 30px !important;                                  /* 纵向间距 */
-  padding: 10px 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;                        /* 核心：永远以屏幕中心线为基准居中 */
+  align-items: flex-start !important;
+  gap: 30px 26px !important;                                 /* 纵向 30px，横向 26px WebDesk 间距 */
+  max-width: 1000px !important;                              /* 限制最大排布宽度，避免大屏拉扯太散 */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 15px 0 !important;
 }
 
 /* 2. 卡片外框完全透明与紧凑贴合 */
