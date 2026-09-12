@@ -154,32 +154,36 @@
   background: rgba(57, 157, 255, 0.65) !important;
   width: 42% !important;
 } 
- /* 8. 极简通透毛玻璃搜索框：字号和谐缩小 + 强制垂直居中 + 高级浅色通透质感 */
-body.desktop-page-style3 .search-input-target,
-body.desktop-page-style3.custom-wallpaper .search-input-target,
-body .search-input-target {
+ /* 8. 极简通透毛玻璃搜索框：全主题适配（明亮/暗色均生效） + 强制居中 */
+html body .search-input-target,
+html.dark body .search-input-target,
+html body.desktop-page-style3 .search-input-target,
+html.dark body.desktop-page-style3 .search-input-target,
+html body.desktop-page-style3.custom-wallpaper .search-input-target,
+html.dark body.desktop-page-style3.custom-wallpaper .search-input-target {
   font-size: 13px !important;
   height: 38px !important;                                       /* 38px 纤细高质感高度 */
   line-height: normal !important;
-  padding-top: 0 !important;                                     /* 彻底清除原系统的顶部内边距 */
-  padding-bottom: 0 !important;                                  /* 彻底清除原系统的底部内边距 */
+  padding-top: 0 !important;                                     /* 彻底清除顶部内边距 */
+  padding-bottom: 0 !important;                                  /* 彻底清除底部内边距 */
   padding-left: 16px !important;
   padding-right: 38px !important;
   border-radius: 19px !important;                                 /* 完美圆角胶囊 */
-  background: rgba(255, 255, 255, 0.08) !important;              /* 极度通透微透白，告别死灰发黑 */
+  background: rgba(255, 255, 255, 0.08) !important;              /* 暗色与明亮模式下均呈现极通透纯净质感 */
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;       /* 极细微光边缘 */
   color: #ffffff !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
   transition: all 0.25s ease !important;
   box-sizing: border-box !important;
 }
 
-/* 提示词（Placeholder）颜色与绝对垂直居中对齐 */
-body.desktop-page-style3 .search-input-target::placeholder,
-body.desktop-page-style3.custom-wallpaper .search-input-target::placeholder,
-body .search-input-target::placeholder {
+/* 提示词（Placeholder）颜色与绝对垂直居中对齐（明亮/暗色统一步调） */
+html body .search-input-target::placeholder,
+html.dark body .search-input-target::placeholder,
+html body.desktop-page-style3 .search-input-target::placeholder,
+html.dark body.desktop-page-style3 .search-input-target::placeholder {
   color: rgba(255, 255, 255, 0.65) !important;                   /* 柔亮清爽的半透白 */
   font-size: 13px !important;
   font-weight: 400 !important;
@@ -187,18 +191,20 @@ body .search-input-target::placeholder {
 }
 
 /* 点击输入框（聚焦状态 Focus）呼吸微光 */
-body.desktop-page-style3 .search-input-target:focus,
-body.desktop-page-style3.custom-wallpaper .search-input-target:focus,
-body .search-input-target:focus {
+html body .search-input-target:focus,
+html.dark body .search-input-target:focus,
+html body.desktop-page-style3 .search-input-target:focus,
+html.dark body.desktop-page-style3 .search-input-target:focus {
   background: rgba(255, 255, 255, 0.16) !important;              /* 点击时柔和微亮 */
   border-color: rgba(57, 157, 255, 0.65) !important;             /* 科技蓝高光边 */
-  box-shadow: 0 0 0 3px rgba(57, 157, 255, 0.18), 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(57, 157, 255, 0.18), 0 6px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* 右侧搜索放大镜图标：完美垂直居中 */
-body.desktop-page-style3 .home-search-icon,
-body.desktop-page-style3.custom-wallpaper .home-search-icon,
-body .home-search-icon {
+html body .home-search-icon,
+html.dark body .home-search-icon,
+html body.desktop-page-style3 .home-search-icon,
+html.dark body.desktop-page-style3 .home-search-icon {
   top: 50% !important;
   transform: translateY(-50%) !important;
   right: 12px !important;
@@ -208,8 +214,8 @@ body .home-search-icon {
   color: rgba(255, 255, 255, 0.75) !important;
 }
 
-body .search-input-target:focus + .home-search-icon,
-body .home-search-field:focus-within .home-search-icon {
+html body .search-input-target:focus + .home-search-icon,
+html body .home-search-field:focus-within .home-search-icon {
   color: #399dff !important;
 }
 </style>
