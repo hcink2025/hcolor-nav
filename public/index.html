@@ -120,6 +120,40 @@
   color: #ffffff !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
 }
+ /* 7. 搜索选项文字效果：对齐下方分类导航的颜色与下划线效果 */
+.search-engine-option {
+  color: rgba(255, 255, 255, 0.94) !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  opacity: 0.85 !important;
+  transition: all 0.25s ease !important;
+}
+
+.search-engine-option:hover {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.search-engine-option.active {
+  color: #399dff !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+.search-engine-option::after {
+  height: 2px !important;
+  border-radius: 1px !important;
+}
+
+.search-engine-option.active::after {
+  background: #399dff !important;
+  width: 58% !important;
+}
+
+.search-engine-option:hover::after {
+  background: rgba(57, 157, 255, 0.65) !important;
+  width: 42% !important;
+} 
 </style>
 </head>
 <body class="bg-secondary-50 font-sans text-gray-800">
