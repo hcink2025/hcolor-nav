@@ -154,15 +154,26 @@
   background: rgba(57, 157, 255, 0.65) !important;
   width: 42% !important;
 } 
- /* 9. 搜索框上下间距平衡居中：彻底解决偏上问题 */
-.search-engine-wrapper {
-  margin-bottom: 18px !important;                                /* 增加与上方选项的间距 */
+ /* 8. 极简通透毛玻璃搜索框：黄金长度 + 绝对上下居中 + 全主题适配 */
+html body .home-search-shell,
+html.dark body .home-search-shell,
+body.desktop-page-style3 .home-search-shell {
+  width: 90% !important;
+  max-width: 420px !important;                                    /* 核心：黄金比例宽度，与下方分类导航完美呼应 */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 10px !important;
+  margin-bottom: 22px !important;                                 /* 与下方分类保持适度舒适的间距 */
 }
 
-.home-search-shell {
-  margin-bottom: 22px !important;                                /* 收紧与下方分类的距离，完美对称居中 */
-} 
- /* 8. 极简通透毛玻璃搜索框：全主题适配（明亮/暗色均生效） + 强制居中 */
+/* 核心：拉开与上方“站内/Google/Baidu”的距离，实现上下等距居中 */
+html body .search-engine-wrapper,
+html.dark body .search-engine-wrapper {
+  margin-bottom: 16px !important;
+  gap: 0.5rem 0.75rem !important;
+}
+
+/* 搜索框本体：38px 高度、清透玻璃质感、纯白文字 */
 html body .search-input-target,
 html.dark body .search-input-target,
 html body.desktop-page-style3 .search-input-target,
@@ -170,45 +181,45 @@ html.dark body.desktop-page-style3 .search-input-target,
 html body.desktop-page-style3.custom-wallpaper .search-input-target,
 html.dark body.desktop-page-style3.custom-wallpaper .search-input-target {
   font-size: 13px !important;
-  height: 38px !important;                                       /* 38px 纤细高质感高度 */
+  height: 38px !important;
   line-height: normal !important;
-  padding-top: 0 !important;                                     /* 彻底清除顶部内边距 */
-  padding-bottom: 0 !important;                                  /* 彻底清除底部内边距 */
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   padding-left: 16px !important;
   padding-right: 38px !important;
-  border-radius: 19px !important;                                 /* 完美圆角胶囊 */
-  background: rgba(255, 255, 255, 0.08) !important;              /* 暗色与明亮模式下均呈现极通透纯净质感 */
+  border-radius: 19px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;       /* 极细微光边缘 */
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   color: #ffffff !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
   transition: all 0.25s ease !important;
   box-sizing: border-box !important;
 }
 
-/* 提示词（Placeholder）颜色与绝对垂直居中对齐（明亮/暗色统一步调） */
+/* 提示词颜色与绝对垂直居中 */
 html body .search-input-target::placeholder,
 html.dark body .search-input-target::placeholder,
 html body.desktop-page-style3 .search-input-target::placeholder,
 html.dark body.desktop-page-style3 .search-input-target::placeholder {
-  color: rgba(255, 255, 255, 0.65) !important;                   /* 柔亮清爽的半透白 */
+  color: rgba(255, 255, 255, 0.65) !important;
   font-size: 13px !important;
   font-weight: 400 !important;
-  line-height: 36px !important;                                  /* 强制让 placeholder 垂直居中 */
+  line-height: 36px !important;
 }
 
-/* 点击输入框（聚焦状态 Focus）呼吸微光 */
+/* 聚焦状态光晕 */
 html body .search-input-target:focus,
 html.dark body .search-input-target:focus,
 html body.desktop-page-style3 .search-input-target:focus,
 html.dark body.desktop-page-style3 .search-input-target:focus {
-  background: rgba(255, 255, 255, 0.16) !important;              /* 点击时柔和微亮 */
-  border-color: rgba(57, 157, 255, 0.65) !important;             /* 科技蓝高光边 */
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(57, 157, 255, 0.65) !important;
   box-shadow: 0 0 0 3px rgba(57, 157, 255, 0.18), 0 6px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* 右侧搜索放大镜图标：完美垂直居中 */
+/* 右侧放大镜图标垂直居中 */
 html body .home-search-icon,
 html.dark body .home-search-icon,
 html body.desktop-page-style3 .home-search-icon,
