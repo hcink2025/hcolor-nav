@@ -154,51 +154,64 @@
   background: rgba(57, 157, 255, 0.65) !important;
   width: 42% !important;
 } 
- /* 8. 极简通透毛玻璃搜索框：字号和谐缩小 + 质感升级 */
-.search-input-target {
-  font-size: 13px !important;                                    /* 调小提示词与输入文字 */
-  height: 42px !important;                                       /* 稍微收窄高度，更纤细轻盈 */
-  line-height: 42px !important;                                  /* 核心：文字行高与输入框同高，强制垂直绝对居中 */
-  padding: 0 42px 0 18px !important;                             /* 上下 padding 清零，彻底消除偏位 */
-  box-sizing: border-box !important;
-  vertical-align: middle !important;
-  border-radius: 21px !important;                                 /* 完美圆角胶囊 */                               /* 完美圆角胶囊 */
-  background: rgba(255, 255, 255, 0.14) !important;              /* 高级通透底色 */
-  backdrop-filter: blur(16px) saturate(180%) !important;         /* 苹果级毛玻璃 */
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;       /* 晶莹细微白边 */
-  color: #ffffff !important;                                      /* 输入文字纯白 */
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+ /* 8. 极简通透毛玻璃搜索框：字号和谐缩小 + 强制垂直居中 + 高级浅色通透质感 */
+body.desktop-page-style3 .search-input-target,
+body.desktop-page-style3.custom-wallpaper .search-input-target,
+body .search-input-target {
+  font-size: 13px !important;
+  height: 38px !important;                                       /* 38px 纤细高质感高度 */
+  line-height: normal !important;
+  padding-top: 0 !important;                                     /* 彻底清除原系统的顶部内边距 */
+  padding-bottom: 0 !important;                                  /* 彻底清除原系统的底部内边距 */
+  padding-left: 16px !important;
+  padding-right: 38px !important;
+  border-radius: 19px !important;                                 /* 完美圆角胶囊 */
+  background: rgba(255, 255, 255, 0.08) !important;              /* 极度通透微透白，告别死灰发黑 */
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;       /* 极细微光边缘 */
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
   transition: all 0.25s ease !important;
+  box-sizing: border-box !important;
 }
 
-/* 提示词（Placeholder）颜色与字重 */
-.search-input-target::placeholder {
-  color: rgba(255, 255, 255, 0.6) !important;                    /* 柔和白灰，清爽不扎眼 */
+/* 提示词（Placeholder）颜色与绝对垂直居中对齐 */
+body.desktop-page-style3 .search-input-target::placeholder,
+body.desktop-page-style3.custom-wallpaper .search-input-target::placeholder,
+body .search-input-target::placeholder {
+  color: rgba(255, 255, 255, 0.65) !important;                   /* 柔亮清爽的半透白 */
   font-size: 13px !important;
   font-weight: 400 !important;
+  line-height: 36px !important;                                  /* 强制让 placeholder 垂直居中 */
 }
 
-/* 点击输入框（聚焦状态 Focus）高质感光晕 */
-.search-input-target:focus {
-  background: rgba(255, 255, 255, 0.22) !important;              /* 聚焦时稍微提亮 */
-  border-color: rgba(57, 157, 255, 0.7) !important;              /* 柔和科技蓝微光 */
-  box-shadow: 0 0 0 3px rgba(57, 157, 255, 0.22), 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+/* 点击输入框（聚焦状态 Focus）呼吸微光 */
+body.desktop-page-style3 .search-input-target:focus,
+body.desktop-page-style3.custom-wallpaper .search-input-target:focus,
+body .search-input-target:focus {
+  background: rgba(255, 255, 255, 0.16) !important;              /* 点击时柔和微亮 */
+  border-color: rgba(57, 157, 255, 0.65) !important;             /* 科技蓝高光边 */
+  box-shadow: 0 0 0 3px rgba(57, 157, 255, 0.18), 0 6px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* 右侧搜索放大镜图标：同步缩小并精致居中 */
-.home-search-icon {
-  width: 17px !important;
-  height: 17px !important;
-  right: 14px !important;
+/* 右侧搜索放大镜图标：完美垂直居中 */
+body.desktop-page-style3 .home-search-icon,
+body.desktop-page-style3.custom-wallpaper .home-search-icon,
+body .home-search-icon {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  right: 12px !important;
+  left: auto !important;
+  width: 16px !important;
+  height: 16px !important;
   color: rgba(255, 255, 255, 0.75) !important;
-  transition: color 0.2s ease !important;
 }
 
-.search-input-target:focus + .home-search-icon,
-.home-search-field:focus-within .home-search-icon {
+body .search-input-target:focus + .home-search-icon,
+body .home-search-field:focus-within .home-search-icon {
   color: #399dff !important;
-} 
+}
 </style>
 </head>
 <body class="bg-secondary-50 font-sans text-gray-800">
