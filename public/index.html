@@ -157,6 +157,21 @@
   background: rgba(57, 157, 255, 0.65) !important;
   width: 42% !important;
 } 
+     /* 10. 消除分类栏与下方书签图标之间的巨大间距 */
+    body.desktop-page-style3 header,
+    body header {
+      padding-bottom: 0 !important;
+    }
+    .home-stats-row {
+      display: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    section.max-w-7xl,
+    section.max-w-7xl > div {
+      padding-top: 8px !important;
+    }   
  /* 8. 极简通透毛玻璃搜索框：黄金长度 + 绝对上下居中 + 全主题适配 */
 html body .home-search-shell,
 html.dark body .home-search-shell,
