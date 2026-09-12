@@ -563,5 +563,27 @@ html body .home-search-field:focus-within .home-search-icon {
   <script src="/js/home-search.js?v=fd3df0ae"></script>
   <script src="/js/home-category-nav.js?v=29aa1efc"></script>
   <script src="/js/main.js?v=193ce81f"></script>
+  <!-- 自动为标语副标题注入逐字波浪涟漪 -->
+  <script>
+    (function() {
+      function initWaveSubtitle() {
+        document.querySelectorAll('.home-title-block p').forEach(function(p) {
+          if (!p.dataset.rippled && p.textContent.trim()) {
+            p.dataset.rippled = 'true';
+            var chars = Array.from(p.textContent.trim());
+            p.innerHTML = chars.map(function(c, i) {
+              var isDot = (c === '·' || c === '•' || c === '.');
+              return '<span class="' + (isDot ? 'wave-dot' : 'wave-char') + '" style="--i:' + i + '">' + c + '</span>';
+            }).join('');
+          }
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initWaveSubtitle);
+      } else {
+        initWaveSubtitle();
+      }
+    })();
+  </script>  
 </body>
 </html>
