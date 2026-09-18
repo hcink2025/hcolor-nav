@@ -428,9 +428,26 @@ html body .home-search-field:focus-within .home-search-icon {
       max-width: 420px !important;
     }
 
-    /* 输入框左侧留出图标空间 */
+        /* 彻底去除搜索框里的提示文字 (百度搜索、Google搜索等文字全部去掉，只留纯净图标) */
+    .search-input-target::placeholder,
+    .search-input-target::-webkit-input-placeholder,
+    .search-input-target::-moz-placeholder,
+    html body .search-input-target::placeholder,
+    html.dark body .search-input-target::placeholder,
+    body.desktop-page-style3 .search-input-target::placeholder,
+    body.desktop-page-style3.custom-wallpaper .search-input-target::placeholder,
+    body.desktop-page-style3.category-pos-top .search-input-target::placeholder {
+      color: transparent !important;
+      opacity: 0 !important;
+      font-size: 0 !important;
+    }
+
+    /* 强制光标与打字起始位置在图标右侧，绝不发生文字压图标 */
     html body .search-input-target,
-    html.dark body .search-input-target {
+    html.dark body .search-input-target,
+    body.desktop-page-style3 .search-input-target,
+    body.desktop-page-style3.custom-wallpaper .search-input-target,
+    body.desktop-page-style3.category-pos-top .search-input-target {
       padding-left: 56px !important;
     }
 
