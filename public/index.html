@@ -255,7 +255,7 @@ html body .search-input-target:focus + .home-search-icon,
 html body .home-search-field:focus-within .home-search-icon {
   color: #399dff !important;
 }
-             /* 11. 标语慢动作呼吸发光与副标水波接力动画 (发光-驻留-熄灭 慢动作过程) */
+                 /* 11. 标语慢动作发光(停留3秒)与副标水波接力动画 */
     .home-title-block {
       display: flex !important;
       flex-direction: column !important;
@@ -263,18 +263,17 @@ html body .home-search-field:focus-within .home-search-icon {
       position: relative;
     }
 
-    /* 主标：浩彩油墨 - 慢动作绽放与渐隐 (约4秒慢动作过程，温润呼吸质感) */
+    /* 主标：浩彩油墨 - 慢升 1.5s -> 高光驻留 3s -> 慢熄 1.5s -> 沉淀 6s (总计12s) */
     .home-title-block h1 {
       position: relative !important;
       display: inline-block !important;
       overflow: hidden !important;
       border-radius: 8px;
       padding: 2px 14px !important;
-      /* 10秒一个循环：呼吸慢升 -> 饱满驻留 -> 呼吸慢落 -> 宁静沉淀 */
-      animation: titleSlowBloom 10s infinite ease-in-out !important;
+      animation: title12sBloom 12s infinite ease-in-out !important;
     }
 
-    /* 宽阔柔和的慢速流光柱：随光晕同步缓缓滑过 */
+    /* 宽阔柔和的慢速流光柱：在3秒高光驻留期间静静滑过 */
     .home-title-block h1::after {
       content: '' !important;
       position: absolute !important;
@@ -286,58 +285,53 @@ html body .home-search-field:focus-within .home-search-icon {
         110deg,
         rgba(255, 255, 255, 0) 0%,
         rgba(255, 255, 255, 0.35) 25%,
-        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 255, 255, 0.95) 50%,
         rgba(255, 255, 255, 0.35) 75%,
         rgba(255, 255, 255, 0) 100%
       ) !important;
       transform: skewX(-25deg) !important;
       pointer-events: none !important;
       z-index: 10 !important;
-      animation: titleSlowShimmer 10s infinite cubic-bezier(0.4, 0, 0.2, 1) !important;
+      animation: title12sShimmer 12s infinite cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
-    /* 浩彩油墨慢动作发光与熄灭核心 */
-    @keyframes titleSlowBloom {
+    /* 浩彩油墨发光节奏：1.5s慢升 -> 饱满停留整整3秒 -> 1.5s慢熄 */
+    @keyframes title12sBloom {
       0%, 100% {
         filter: brightness(1) drop-shadow(0 0 0 rgba(56, 189, 248, 0));
         transform: scale(1);
       }
-      /* 0% ~ 14% (约1.4秒): 慢慢发光，翡翠青蓝光晕缓缓向外扩散升起 */
-      14% {
-        filter: brightness(1.22) drop-shadow(0 0 15px rgba(0, 210, 200, 0.65));
-        transform: scale(1.018);
-      }
-      /* 14% ~ 25% (约1.1秒): 饱满温润驻留，光芒辉映极光通透感 */
-      25% {
-        filter: brightness(1.38) drop-shadow(0 0 24px rgba(56, 189, 248, 0.9)) drop-shadow(0 0 45px rgba(0, 150, 145, 0.45));
+      /* 1.5s (12.5%): 缓缓升至最高光辉 */
+      12.5% {
+        filter: brightness(1.36) drop-shadow(0 0 24px rgba(56, 189, 248, 0.9)) drop-shadow(0 0 45px rgba(0, 150, 145, 0.45));
         transform: scale(1.025);
       }
-      /* 25% ~ 38% (约1.3秒): 像深呼吸一样慢慢收拢、慢慢减弱熄灭 */
-      38% {
-        filter: brightness(1.15) drop-shadow(0 0 12px rgba(56, 189, 248, 0.4));
-        transform: scale(1.008);
+      /* 4.5s (37.5%): 整整停留 3 秒的高光时刻！ */
+      37.5% {
+        filter: brightness(1.36) drop-shadow(0 0 24px rgba(56, 189, 248, 0.9)) drop-shadow(0 0 45px rgba(0, 150, 145, 0.45));
+        transform: scale(1.025);
       }
-      /* 38% ~ 48% (约1.0秒): 完全平滑归位于自然状态 */
-      48%, 99% {
+      /* 6.0s (50%): 伴随副标跳跃完成，缓缓收束熄灭 */
+      50%, 99% {
         filter: brightness(1) drop-shadow(0 0 0 rgba(56, 189, 248, 0));
         transform: scale(1);
       }
     }
 
-    /* 配合发光驻留阶段的慢速流光 */
-    @keyframes titleSlowShimmer {
-      0%, 10% {
+    /* 配合高光驻留期的流光划过 (1.8s ~ 3.8s) */
+    @keyframes title12sShimmer {
+      0%, 15% {
         left: -160%;
         opacity: 0;
       }
-      14% {
-        opacity: 0.9;
+      18% {
+        opacity: 0.95;
       }
-      28% {
+      32% {
         left: 190%;
-        opacity: 0.9;
+        opacity: 0.95;
       }
-      32%, 100% {
+      35%, 100% {
         left: 210%;
         opacity: 0;
       }
@@ -351,43 +345,45 @@ html body .home-search-field:focus-within .home-search-icon {
       letter-spacing: 0.05em !important;
     }
 
-    /* 副标逐字水波跳跃接力 (在主标发光后优雅衔接) */
+    /* 副标逐字水波跳跃 */
     .home-title-block p .wave-char {
       display: inline-block !important;
       transform-origin: bottom center !important;
-      animation: charWave 10s infinite cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-      animation-delay: calc(1.8s + var(--i) * 0.055s) !important;
+      animation: charWave12s 12s infinite cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+      /* 方案一(停留3秒后启动): 改为 4.5s；方案二(推荐共鸣启动): 改为 3.2s */
+      animation-delay: calc(3.2s + var(--i) * 0.055s) !important;
     }
     .home-title-block p .wave-dot {
       display: inline-block !important;
       padding: 0 3px !important;
       opacity: 0.6 !important;
-      animation: dotWave 10s infinite ease-in-out !important;
-      animation-delay: calc(1.8s + var(--i) * 0.055s) !important;
+      animation: dotWave12s 12s infinite ease-in-out !important;
+      /* 方案一(停留3秒后启动): 改为 4.5s；方案二(推荐共鸣启动): 改为 3.2s */
+      animation-delay: calc(3.2s + var(--i) * 0.055s) !important;
     }
 
-    @keyframes charWave {
-      0%, 2%, 10%, 100% {
+    @keyframes charWave12s {
+      0%, 2%, 9%, 100% {
         transform: translateY(0) scale(1);
         color: inherit;
         text-shadow: none;
       }
-      5% {
+      4.5% {
         transform: translateY(-5px) scale(1.08);
         color: #38bdf8;
         text-shadow: 0 0 10px rgba(56, 189, 248, 0.8), 0 0 18px rgba(0, 150, 145, 0.4);
       }
-      8% {
+      7.5% {
         transform: translateY(1px) scale(0.98);
         color: #00b4ad;
       }
     }
-    @keyframes dotWave {
-      0%, 2%, 10%, 100% {
+    @keyframes dotWave12s {
+      0%, 2%, 9%, 100% {
         transform: scale(1);
         opacity: 0.6;
       }
-      5% {
+      4.5% {
         transform: translateY(-3px) scale(1.3);
         opacity: 1;
         color: #38bdf8;
