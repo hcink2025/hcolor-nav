@@ -411,7 +411,7 @@ html body .home-search-field:focus-within .home-search-icon {
     body.desktop-page-style3.custom-wallpaper .nav-btn:hover::before {
       width: 42% !important;
     }
-    /* 13. 优雅搜索引擎助手: 隐藏顶部文字 + 搜索与书签整体上移 + 内嵌 Google/百度 切换 */
+        /* 13. 优雅搜索引擎助手: 纯图标极简风格 (搜索框及弹出框均只保留纯图标，无任何多余文字) */
     .search-engine-wrapper {
       display: none !important;
       height: 0 !important;
@@ -428,7 +428,7 @@ html body .home-search-field:focus-within .home-search-icon {
       max-width: 420px !important;
     }
 
-        /* 彻底去除搜索框里的提示文字 (百度搜索、Google搜索等文字全部去掉，只留纯净图标) */
+    /* 彻底去除输入框内的一切提示文字 (百度搜索、Google搜索等全部消失) */
     .search-input-target::placeholder,
     .search-input-target::-webkit-input-placeholder,
     .search-input-target::-moz-placeholder,
@@ -442,7 +442,7 @@ html body .home-search-field:focus-within .home-search-icon {
       font-size: 0 !important;
     }
 
-    /* 强制光标与打字起始位置在图标右侧，绝不发生文字压图标 */
+    /* 强制光标和打字位置在左侧图标右侧，绝不压图标 */
     html body .search-input-target,
     html.dark body .search-input-target,
     body.desktop-page-style3 .search-input-target,
@@ -495,24 +495,24 @@ html body .home-search-field:focus-within .home-search-icon {
       transform: rotate(180deg) !important;
     }
 
-    /* 毛玻璃下拉菜单 */
+    /* 弹出框: 纯图标微型浮窗 (超小、超精致) */
     .engine-menu {
       position: absolute !important;
       top: calc(100% + 8px) !important;
       left: 0 !important;
-      min-width: 145px !important;
+      min-width: auto !important;
+      width: auto !important;
       background: rgba(26, 36, 48, 0.95) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
       border: 1px solid rgba(255, 255, 255, 0.15) !important;
       border-radius: 12px !important;
-      padding: 6px !important;
+      padding: 4px !important;
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.2) !important;
       display: none !important;
       flex-direction: column !important;
-      gap: 3px !important;
+      gap: 4px !important;
       z-index: 100 !important;
-      text-align: left !important;
       animation: engineFadeIn 0.18s ease-out !important;
     }
     @keyframes engineFadeIn {
@@ -525,26 +525,30 @@ html body .home-search-field:focus-within .home-search-icon {
     .engine-menu-item {
       display: flex !important;
       align-items: center !important;
-      gap: 10px !important;
-      padding: 8px 12px !important;
+      justify-content: center !important;
+      width: 34px !important;
+      height: 34px !important;
+      padding: 0 !important;
       border-radius: 8px !important;
-      font-size: 13px !important;
-      color: rgba(255, 255, 255, 0.85) !important;
       cursor: pointer !important;
-      transition: all 0.15s ease !important;
+      transition: all 0.18s ease !important;
+      background: transparent !important;
     }
     .engine-menu-item:hover {
-      background: rgba(56, 189, 248, 0.15) !important;
-      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.14) !important;
     }
     .engine-menu-item.active {
-      background: rgba(56, 189, 248, 0.22) !important;
-      color: #38bdf8 !important;
-      font-weight: 600 !important;
+      background: rgba(56, 189, 248, 0.25) !important;
+      border: 1px solid rgba(56, 189, 248, 0.45) !important;
+    }
+    /* 彻底去除弹出框里的所有文字与对勾，只留纯图标 */
+    .engine-menu-item span,
+    .engine-menu-item .check-mark {
+      display: none !important;
     }
     .engine-menu-item .item-icon {
-      width: 17px !important;
-      height: 17px !important;
+      width: 18px !important;
+      height: 18px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -552,17 +556,7 @@ html body .home-search-field:focus-within .home-search-icon {
     .engine-menu-item .item-icon svg {
       width: 100% !important;
       height: 100% !important;
-    }
-    .engine-menu-item .check-mark {
-      margin-left: auto !important;
-      width: 14px !important;
-      height: 14px !important;
-      opacity: 0 !important;
-    }
-    .engine-menu-item.active .check-mark {
-      opacity: 1 !important;
-      color: #38bdf8 !important;
-    }  
+    } 
 </style>
 </head>
 <body class="bg-secondary-50 font-sans text-gray-800">
