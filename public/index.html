@@ -428,15 +428,19 @@ html body .home-search-field:focus-within .home-search-icon {
       max-width: 420px !important;
     }
 
-    /* 彻底去除输入框内的一切提示文字 (百度搜索、Google搜索等全部消失) */
-    .search-input-target::placeholder,
-    .search-input-target::-webkit-input-placeholder,
-    .search-input-target::-moz-placeholder,
+     /* 彻底消除所有提示文字 (独立标准规则，Chrome/Edge 强制生效) */
     html body .search-input-target::placeholder,
     html.dark body .search-input-target::placeholder,
     body.desktop-page-style3 .search-input-target::placeholder,
     body.desktop-page-style3.custom-wallpaper .search-input-target::placeholder,
     body.desktop-page-style3.category-pos-top .search-input-target::placeholder {
+      color: transparent !important;
+      opacity: 0 !important;
+      font-size: 0 !important;
+    }
+
+    html body .search-input-target::-webkit-input-placeholder,
+    body.desktop-page-style3.custom-wallpaper .search-input-target::-webkit-input-placeholder {
       color: transparent !important;
       opacity: 0 !important;
       font-size: 0 !important;
