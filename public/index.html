@@ -26,161 +26,153 @@
   </script>
   <link rel="stylesheet" href="/css/tailwind.min.css?v=38e0a016">
 <style>
-/* ============================================================ */
-/* WebDesk 1:1 像素级 App 桌面图标效果（完美无白边修复版） */
-/* ============================================================ */
-
-/* 1. 桌面弹性网格：整体严格居中对齐，WebDesk 原生桌面呼吸间距 */
-#sitesGrid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  align-items: flex-start !important;
-  gap: 36px 32px !important;                          /* 纵向 36px，横向 32px WebDesk 标准桌面间距 */
-  max-width: 1050px !important;                       /* 限制排布总宽，大屏视野舒适自然 */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding: 16px 10px !important;
-}
-
-/* 2. 彻底释放卡片外壳，避免拘束与裁剪 */
-#sitesGrid .site-card,
-#sitesGrid .site-card.style-3 {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  overflow: visible !important;                       /* 允许文字向两侧展开 */
-  padding: 0 !important;
-  width: 64px !important;                             /* 卡片基准宽度与图标 64px 绝对对齐 */
-  min-height: auto !important;
-  height: auto !important;
-  cursor: pointer !important;
-}
-
-/* 3. 上下垂直居中排布 */
-#sitesGrid .site-card .site-card-content,
-#sitesGrid .site-card .site-card-content > a,
-#sitesGrid .site-card .site-card-content > a > div,
-#sitesGrid .site-card.style-3 .flex.items-start {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  width: 100% !important;
-  position: static !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 4. 标准 WebDesk 64x64 App 图标底座 (标准 iOS 平滑大圆角) */
-#sitesGrid .site-card .site-icon,
-#sitesGrid .site-card.style-3 .site-icon {
-  position: relative !important;
-  width: 64px !important;                             /* WebDesk 原版尺寸 64px */
-  height: 64px !important;
-  min-width: 64px !important;
-  min-height: 64px !important;
-  max-width: 64px !important;
-  max-height: 64px !important;
-  border-radius: 16px !important;                      /* WebDesk 原版标准 16px 平滑圆角 */
-  background: transparent !important;
-  background-color: transparent !important;
-  overflow: hidden !important;                         /* 标准圆角硬裁切 */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 auto 8px auto !important;                  /* 图标与下方文字 8px 舒适间隙 */
-  padding: 0 !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22) !important; /* WebDesk 标志性弥散光 */
-  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.22s ease !important;
-  will-change: transform, box-shadow;
-}
-
-/* 5. 图片自适应规则：高清 App 图标 64x64 满铺裁切 */
-#sitesGrid .site-card .site-icon img,
-#sitesGrid .site-card.style-3 .site-icon img {
-  display: block !important;
-  width: 64px !important;
-  height: 64px !important;
-  min-width: 64px !important;
-  min-height: 64px !important;
-  max-width: 64px !important;
-  max-height: 64px !important;
-  object-fit: cover !important;
-  border-radius: 16px !important;
-  border: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: transparent !important;
-  image-rendering: -webkit-optimize-contrast !important;
-  image-rendering: high-quality !important;
-  pointer-events: none !important;
-}
-
-/* 仅对普通透明小 Favicon（如 Google、卡饭等）提供精致白底衬托 */
-#sitesGrid .site-card .site-icon:has(img[src*="favicon"]),
-#sitesGrid .site-card .site-icon:has(img[src*="google.com"]),
-#sitesGrid .site-card .site-icon:has(img[src*="gstatic.com"]) {
-  background-color: #ffffff !important;
-}
-#sitesGrid .site-card .site-icon img[src*="favicon"],
-#sitesGrid .site-card .site-icon img[src*="google.com"],
-#sitesGrid .site-card .site-icon img[src*="gstatic.com"] {
-  width: 38px !important;
-  height: 38px !important;
-  min-width: 38px !important;
-  min-height: 38px !important;
-  object-fit: contain !important;
-  border-radius: 6px !important;
-  margin: auto !important;
-}
-
-/* 6. 悬停轻浮起 + 点击真机按压手感（WebDesk 微动效） */
-#sitesGrid .site-card:hover .site-icon {
-  transform: translateY(-4px) scale(1.05) !important;  /* 向上悬浮 + 1.05 微放大 */
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32) !important;
-}
-
-#sitesGrid .site-card:active .site-icon {
-  transform: translateY(0px) scale(0.95) !important;   /* 原生 iOS App 点击按压微缩回弹 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
-  transition-duration: 0.08s !important;
-}
-
-/* 7. WebDesk 独家：破框扩展标题文字容器算法（彻底杜绝过早出现省略号） */
-#sitesGrid .site-card .site-title,
-#sitesGrid .site-card.style-3 .site-title {
-  position: static !important;
-  display: block !important;
-  /* 图标 64px，两侧各借用间距 20px，文字可用宽度达 104px */
-  width: 104px !important;
-  margin-left: -20px !important;
-  margin-right: -20px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  text-align: center !important;
-  font-size: 12px !important;                          /* WebDesk 12px 标准桌面字号 */
-  font-weight: 500 !important;
-  line-height: 1.35 !important;
-  letter-spacing: 0.02em !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  color: #ffffff !important;
-  /* 双层立体文字阴影：在任何明暗壁纸下字迹都极具立体感与易读性 */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85),
-               0 0 6px rgba(0, 0, 0, 0.5) !important;
-  transition: color 0.2s ease !important;
-}
-
-#sitesGrid .site-card:hover .site-title {
-  color: #ffffff !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95),
-               0 0 8px rgba(56, 189, 248, 0.6) !important;  /* 悬停时字带冰蓝微光 */
-}
+  /* ============================================================ */
+  /* WebDesk 1:1 像素级 App 桌面图标效果（文字不遮挡 + 图标全铺版） */
+  /* ============================================================ */
+  
+  /* 1. 桌面弹性网格：居中排布，WebDesk 原生桌面呼吸感间距 */
+  #sitesGrid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 30px 22px !important;                          /* 纵向 30px，横向 22px 经典桌面布局 */
+    max-width: 1080px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 16px 10px !important;
+  }
+  
+  /* 2. 卡片外壳：彻底关闭 CSS contain:paint 裁剪，给文字充足呼吸宽度 */
+  #sitesGrid .site-card,
+  #sitesGrid .site-card.style-3 {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    contain: none !important;                           /* 核心：彻底关闭容器硬裁剪，绝不切字 */
+    overflow: visible !important;
+    padding: 0 !important;
+    width: 84px !important;                             /* 宽度放开至 84px，完美容纳 4-5 字标题 */
+    min-height: auto !important;
+    height: auto !important;
+    cursor: pointer !important;
+  }
+  
+  /* 3. 内部元素全部垂直居中 */
+  #sitesGrid .site-card .site-card-content,
+  #sitesGrid .site-card .site-card-content > a,
+  #sitesGrid .site-card .site-card-content > a > div,
+  #sitesGrid .site-card.style-3 .flex.items-start {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    width: 100% !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  
+  /* 消除 flex-1 在垂直布局下的高度与宽度塌陷 */
+  #sitesGrid .site-card .flex-1 {
+    flex: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+  
+  /* 4. 标准 WebDesk 64x64 App 图标底座 (标准 iOS 平滑大圆角) */
+  #sitesGrid .site-card .site-icon,
+  #sitesGrid .site-card.style-3 .site-icon {
+    position: relative !important;
+    width: 64px !important;                             /* WebDesk 原版尺寸 64px */
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
+    border-radius: 16px !important;                      /* WebDesk 原版标准 16px 平滑圆角 */
+    background: transparent !important;
+    background-color: transparent !important;
+    overflow: hidden !important;                         /* 仅在 64px 图标底盘进行 16px 圆角裁切 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 6px auto !important;                  /* 图标与下方文字 6px 间隙 */
+    padding: 0 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22) !important; /* WebDesk 桌面 App 阴影 */
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.22s ease !important;
+    will-change: transform, box-shadow;
+  }
+  
+  /* 5. 核心：彻底剥离底层白边与内边距，实现 100% 满铺裁切 */
+  #sitesGrid .site-card .site-icon img,
+  #sitesGrid .site-card .site-icon .site-initial,
+  #sitesGrid .site-card.style-3 .site-icon img,
+  #sitesGrid .site-card.style-3 .site-icon div {
+    display: block !important;
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;                              /* 彻底清除底层 4px 白边内边距 */
+    background: transparent !important;                 /* 彻底去除怪异白底 */
+    background-color: transparent !important;
+    box-shadow: none !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: high-quality !important;
+    pointer-events: none !important;
+  }
+  
+  /* 6. 悬停浮起 + 点击真机按压手感（WebDesk 微动效） */
+  #sitesGrid .site-card:hover .site-icon {
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32) !important;
+  }
+  
+  #sitesGrid .site-card:active .site-icon {
+    transform: translateY(0px) scale(0.96) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+    transition-duration: 0.08s !important;
+  }
+  
+  /* 7. 标题文字：完整清晰展现，居中阴影，决不遮挡截断 */
+  #sitesGrid .site-card .site-title,
+  #sitesGrid .site-card.style-3 .site-title {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 2px !important;
+    text-align: center !important;
+    font-size: 12px !important;                          /* WebDesk 12px 标准字号 */
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.01em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85),
+                 0 0 6px rgba(0, 0, 0, 0.5) !important;
+    transition: color 0.2s ease !important;
+  }
+  
+  #sitesGrid .site-card:hover .site-title {
+    color: #ffffff !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95),
+                 0 0 8px rgba(56, 189, 248, 0.6) !important;
+  }
  /* 7. 搜索选项文字效果：对齐下方分类导航的颜色与下划线效果 */
 .search-engine-option {
   color: rgba(255, 255, 255, 0.94) !important;
