@@ -74,31 +74,29 @@
   padding: 0 !important;
 }
 
-/* 4. 标准 WebDesk 64x64 App 图标底座 (iOS 连续曲率圆角，彻底消除多余白边) */
+/* 4. 标准 WebDesk 64x64 App 图标底座 (标准 iOS 平滑大圆角) */
 #sitesGrid .site-card .site-icon,
 #sitesGrid .site-card.style-3 .site-icon {
   position: relative !important;
-  width: 64px !important;                             /* WebDesk 标准 linkSize = 64px */
+  width: 64px !important;                             /* WebDesk 原版尺寸 64px */
   height: 64px !important;
   min-width: 64px !important;
   min-height: 64px !important;
   max-width: 64px !important;
   max-height: 64px !important;
-  border-radius: 16px !important;                      /* WebDesk 标准 16px 平滑圆角 */
-  background: transparent !important;                 /* 底色透明，彻底杜绝外露白下巴！ */
+  border-radius: 16px !important;                      /* WebDesk 原版标准 16px 平滑圆角 */
+  background: transparent !important;
   background-color: transparent !important;
-  overflow: hidden !important;                         /* 核心：自动平滑裁切图片为 iOS 圆角 */
+  overflow: hidden !important;                         /* 标准圆角硬裁切 */
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   margin: 0 auto 8px auto !important;                  /* 图标与下方文字 8px 舒适间隙 */
   padding: 0 !important;
-  /* WebDesk 标志性环境弥散阴影：柔和通透立体感 */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22) !important; /* WebDesk 标志性弥散光 */
   transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.22s ease !important;
   will-change: transform, box-shadow;
- 
 }
 
 /* 5. 图片自适应规则：高清 App 图标 64x64 满铺裁切 */
@@ -122,7 +120,7 @@
   pointer-events: none !important;
 }
 
-/* 仅对普通透明小 Favicon（如 Google、卡饭等）提供精致白底衬托，不影响高清大图标 */
+/* 仅对普通透明小 Favicon（如 Google、卡饭等）提供精致白底衬托 */
 #sitesGrid .site-card .site-icon:has(img[src*="favicon"]),
 #sitesGrid .site-card .site-icon:has(img[src*="google.com"]),
 #sitesGrid .site-card .site-icon:has(img[src*="gstatic.com"]) {
