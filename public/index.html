@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/css/tailwind.min.css?v=38e0a016">
 <style>
 /* ============================================================ */
-/* WebDesk 1:1 像素级 App 桌面图标效果（落地增强版） */
+/* WebDesk 1:1 像素级 App 桌面图标效果（完美无白边修复版） */
 /* ============================================================ */
 
 /* 1. 桌面弹性网格：整体严格居中对齐，WebDesk 原生桌面呼吸间距 */
@@ -50,7 +50,7 @@
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  overflow: visible !important;                       /* 核心：必须允许文字向两侧展开 */
+  overflow: visible !important;                       /* 允许文字向两侧展开 */
   padding: 0 !important;
   width: 64px !important;                             /* 卡片基准宽度与图标 64px 绝对对齐 */
   min-height: auto !important;
@@ -74,62 +74,81 @@
   padding: 0 !important;
 }
 
-/* 4. 标准 WebDesk 64x64 App 图标底座 (iOS Squircle 连续曲率) */
+/* 4. 标准 WebDesk 64x64 App 图标底座 (iOS 连续曲率圆角，彻底消除多余白边) */
 #sitesGrid .site-card .site-icon,
 #sitesGrid .site-card.style-3 .site-icon {
   position: relative !important;
   width: 64px !important;                             /* WebDesk 标准 linkSize = 64px */
   height: 64px !important;
-  border-radius: 16px !important;                      /* WebDesk 标准 linkBorderRadius = 16px */
-  background-color: #ffffff !important;                /* 统一纯白底盘衬托 */
-  overflow: hidden !important;                         /* 自动裁切图片为圆角 */
+  min-width: 64px !important;
+  min-height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+  border-radius: 16px !important;                      /* WebDesk 标准 16px 平滑圆角 */
+  background: transparent !important;                 /* 底色透明，彻底杜绝外露白下巴！ */
+  background-color: transparent !important;
+  overflow: hidden !important;                         /* 核心：自动平滑裁切图片为 iOS 圆角 */
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   margin: 0 auto 8px auto !important;                  /* 图标与下方文字 8px 舒适间隙 */
-  /* 双层质感：细腻环境弥散光 + 极细内边框高光 */
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.25) !important;
+  padding: 0 !important;
+  /* WebDesk 标志性环境弥散阴影：柔和通透立体感 */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22) !important;
   transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.22s ease !important;
   will-change: transform, box-shadow;
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* 消除 Safari/Webkit 溢出毛边 */
 }
 
-/* 5. 图片自适应规则：高清 App 图标全铺裁切，普通 Favicon 自动居中防拉伸 */
+/* 5. 图片自适应规则：高清 App 图标 64x64 满铺裁切 */
 #sitesGrid .site-card .site-icon img,
 #sitesGrid .site-card.style-3 .site-icon img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
+  display: block !important;
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
   object-fit: cover !important;
-  border-radius: inherit !important;
+  border-radius: 16px !important;
   border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
   image-rendering: -webkit-optimize-contrast !important;
   image-rendering: high-quality !important;
   pointer-events: none !important;
 }
 
-/* 当遇到普通小 favicon 时，不强制撑满，精致留白居中 */
+/* 仅对普通透明小 Favicon（如 Google、卡饭等）提供精致白底衬托，不影响高清大图标 */
+#sitesGrid .site-card .site-icon:has(img[src*="favicon"]),
+#sitesGrid .site-card .site-icon:has(img[src*="google.com"]),
+#sitesGrid .site-card .site-icon:has(img[src*="gstatic.com"]) {
+  background-color: #ffffff !important;
+}
 #sitesGrid .site-card .site-icon img[src*="favicon"],
 #sitesGrid .site-card .site-icon img[src*="google.com"],
 #sitesGrid .site-card .site-icon img[src*="gstatic.com"] {
   width: 38px !important;
   height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
   object-fit: contain !important;
   border-radius: 6px !important;
+  margin: auto !important;
 }
 
 /* 6. 悬停轻浮起 + 点击真机按压手感（WebDesk 微动效） */
 #sitesGrid .site-card:hover .site-icon {
   transform: translateY(-4px) scale(1.05) !important;  /* 向上悬浮 + 1.05 微放大 */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28),
-              0 0 16px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32) !important;
 }
 
 #sitesGrid .site-card:active .site-icon {
   transform: translateY(0px) scale(0.95) !important;   /* 原生 iOS App 点击按压微缩回弹 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
   transition-duration: 0.08s !important;
 }
 
